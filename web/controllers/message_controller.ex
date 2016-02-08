@@ -1,10 +1,20 @@
 defmodule SingleVoiceMessage.MessageController do
   use SingleVoiceMessage.Web, :controller
 
+  alias SingleVoiceMessage.Message
+
   plug :authenticate
 
   def show(conn, _params) do
-    render conn, "show.xml"
+    messages = Repo.all(Message)
+
+    # FIXME there must be a more idiomatic way
+    message = case length(messages) do
+      0 -> nil
+      _ -> hd(messages)
+    end
+
+    render conn, "show.xml", message: message
   end
 
   def edit(conn, %{"Digits" => pin}) do

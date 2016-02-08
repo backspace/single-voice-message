@@ -1,7 +1,9 @@
 defmodule SingleVoiceMessage.MessageControllerTest do
   use SingleVoiceMessage.ConnCase
 
-  test "GET /", %{conn: conn} do
+  alias SingleVoiceMessage.Message
+
+  test "GET / with no existing message", %{conn: conn} do
     conn = get conn, "/", %{"AccountSid" => "AC123"}
     doc = Exml.parse(response(conn, 200))
 
@@ -10,6 +12,16 @@ defmodule SingleVoiceMessage.MessageControllerTest do
 
     assert Exml.get(doc, "//Say") =~ "Hello from Phoenix"
     assert Exml.get(doc, "//Gather/following-sibling::Redirect") == "/"
+  end
+
+  test "GET / with an existing message", %{conn: conn} do
+    changeset = Message.changeset(%Message{}, %{"url" => "http://example.com/message.wav"})
+    Repo.insert(changeset)
+
+    conn = get conn, "/", %{"AccountSid" => "AC123"}
+    doc = Exml.parse(response(conn, 200))
+
+    assert Exml.get(doc, "//Play") == "http://example.com/message.wav"
   end
 
   test "GET /edit without PIN", %{conn: conn} do
