@@ -26,5 +26,5 @@ config :single_voice_message, SingleVoiceMessage.Repo,
 # Do not print debug messages in production
 config :logger, level: :info
 
-config :single_voice,
+config :single_voice_message,
   twilio_account_sid: System.get_env("TWILIO_ACCOUNT_SID")
