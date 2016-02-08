@@ -17,3 +17,6 @@ config :single_voice_message, SingleVoiceMessage.Repo,
   database: "single_voice_message_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
+
+config :single_voice_message,
+  twilio_account_sid: "AC123"
