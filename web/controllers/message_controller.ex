@@ -26,6 +26,10 @@ defmodule SingleVoiceMessage.MessageController do
     render conn, "edit.xml", permit_editing: permit_editing
   end
 
+  def preview(conn, %{"RecordingUrl" => recording_url}) do
+    render conn, "preview.xml", recording_url: recording_url
+  end
+
   def approve(conn, _) do
     render conn, "approve.xml"
   end

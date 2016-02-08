@@ -42,6 +42,18 @@ defmodule SingleVoiceMessage.MessageControllerTest do
     assert Exml.get(doc, "//Record/@action") == "/preview"
   end
 
+  test "GET /preview", %{conn: conn} do
+    conn = get conn, "/preview", %{"AccountSid" => "AC123", "RecordingUrl" => "http://example.com/new-message.wav"}
+    doc = Exml.parse(response(conn, 200))
+
+    assert Exml.get(doc, "//Say") == "Here is the new message. Press one to accept, two to rerecord."
+
+    assert Exml.get(doc, "//Play") == "http://example.com/new-message.wav"
+
+    assert Exml.get(doc, "//Gather/@method") == "GET"
+    assert Exml.get(doc, "//Gather/@action") == "/approve?RecordingUrl=http%3A%2F%2Fexample.com%2Fnew-message.wav"
+  end
+
   test "GET /approve?AccountSid=valid", %{conn: conn} do
     conn = get conn, "/approve", %{"AccountSid" => "AC123"}
     doc = Exml.parse(response(conn, 200))

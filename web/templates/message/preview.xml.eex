@@ -1,0 +1,6 @@
+<Response>
+  <Gather method="GET" action="<%= message_path(@conn, :approve, RecordingUrl: @recording_url) %>">
+    <Say>Here is the new message. Press one to accept, two to rerecord.</Say>
+    <Play><%= @recording_url %></Play>
+  </Gather>
+</Response>
