@@ -19,6 +19,9 @@ config :single_voice_message, SingleVoiceMessage.Endpoint,
 # Do not print debug messages in production
 config :logger, level: :info
 
+config :single_voice,
+  twilio_account_sid: System.get_env("TWILIO_ACCOUNT_SID")
+
 # ## SSL Support
 #
 # To get SSL working, you will need to add the `https` key
