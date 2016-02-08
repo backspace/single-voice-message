@@ -62,10 +62,29 @@ defmodule SingleVoiceMessage.MessageControllerTest do
     assert Exml.get(doc, "//Gather/@action") == "/approve?RecordingUrl=http%3A%2F%2Fexample.com%2Fnew-message.wav"
   end
 
-  test "GET /approve?AccountSid=valid", %{conn: conn} do
-    conn = get conn, "/approve", %{"AccountSid" => "AC123"}
+  test "GET /approve?Digits=1 with no existing message", %{conn: conn} do
+    conn = get conn, "/approve", %{"AccountSid" => "AC123", "Digits" => "1", "RecordingUrl" => "http://example.com/approved-message.wav"}
     doc = Exml.parse(response(conn, 200))
 
-    assert Exml.get(doc, "//Say") == "Message was updated"
+    assert Exml.get(doc, "//Redirect") == "/"
+
+    conn = get conn, "/", %{"AccountSid" => "AC123"}
+    doc = Exml.parse(response(conn, 200))
+
+    assert Exml.get(doc, "//Play") == "http://example.com/approved-message.wav"
+  end
+
+  test "GET /approve?Digits=1 with an existing message", %{conn: conn} do
+    changeset = Message.changeset(%Message{}, %{"url" => "http://example.com/existing-message.wav"})
+    Repo.insert(changeset)
+
+    conn = get conn, "/approve", %{"AccountSid" => "AC123", "Digits" => "1", "RecordingUrl" => "http://example.com/approved-message.wav"}
+    doc = Exml.parse(response(conn, 200))
+    assert Exml.get(doc, "//Redirect") == "/"
+
+    conn = get conn, "/", %{"AccountSid" => "AC123"}
+    doc = Exml.parse(response(conn, 200))
+
+    assert Exml.get(doc, "//Play") == "http://example.com/approved-message.wav"
   end
 end

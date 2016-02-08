@@ -30,8 +30,33 @@ defmodule SingleVoiceMessage.MessageController do
     render conn, "preview.xml", recording_url: recording_url
   end
 
-  def approve(conn, _) do
-    render conn, "approve.xml"
+  def approve(conn, %{"RecordingUrl" => recording_url}) do
+    messages = Repo.all(Message)
+
+    message = case length(messages) do
+      0 -> nil
+      _ -> hd(messages)
+    end
+
+    if message do
+      changeset = Message.changeset(message, %{"url" => recording_url})
+
+      case Repo.update(changeset) do
+        {:ok, _} ->
+          render conn, "approve.xml"
+        {:error, _changeset} ->
+          render conn, "error.xml"
+      end
+    else
+      changeset = Message.changeset(%Message{}, %{"url" => recording_url})
+
+      case Repo.insert(changeset) do
+        {:ok, _} ->
+          render conn, "approve.xml"
+        {:error, _changeset} ->
+          render conn, "error.xml"
+      end
+    end
   end
 
   defp authenticate(%Plug.Conn{params: %{"AccountSid" => request_twilio_account_sid}} = conn, _) do
