@@ -1,4 +1,4 @@
-# SingleVoiceMessage
+# SingleVoiceMessage [![Build Status](https://travis-ci.org/backspace/single-voice-message.svg?branch=primary)](https://travis-ci.org/backspace/single-voice-message)
 
 This is a front-end to Twilio that plays a single voice message. If the caller
 authenticates, they can change the voice message.
