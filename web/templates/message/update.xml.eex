@@ -1,7 +1,3 @@
 <Response>
-  <%= if @changed do %>
-    <Say>Message was updated</Say>
-  <% else %>
-    <Say>Message was not updated</Say>
-  <% end %>
+  <Say>Message was updated</Say>
 </Response>
