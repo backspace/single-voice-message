@@ -26,4 +26,5 @@ config :single_voice_message, SingleVoiceMessage.Repo,
 config :logger, level: :info
 
 config :single_voice_message,
-  twilio_account_sid: System.get_env("TWILIO_ACCOUNT_SID")
+  twilio_account_sid: System.get_env("TWILIO_ACCOUNT_SID"),
+  pin: System.get_env("PIN")
