@@ -1,5 +1,8 @@
 # SingleVoiceMessage
 
+This is a front-end to Twilio that plays a single voice message. If the caller
+authenticates, they can change the voice message.
+
 To start your Phoenix app:
 
   * Install dependencies with `mix deps.get`
