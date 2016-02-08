@@ -37,7 +37,8 @@ defmodule SingleVoiceMessage.Mixfile do
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.9"},
      {:cowboy, "~> 1.0"},
-     {:mix_test_watch, "~> 0.2", only: :dev}]
+     {:mix_test_watch, "~> 0.2", only: :dev},
+     {:exml, "~> 0.1", only: :test}]
   end
 
   # Aliases are shortcut or tasks specific to the current project.

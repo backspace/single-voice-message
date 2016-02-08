@@ -3,16 +3,22 @@ defmodule SingleVoiceMessage.MessageControllerTest do
 
   test "GET /", %{conn: conn} do
     conn = get conn, "/", %{"AccountSid" => "AC123"}
-    assert response(conn, 200) =~ "Hello from Phoenix"
+    doc = Exml.parse(response(conn, 200))
+
+    assert Exml.get(doc, "//Say") == "Hello from Phoenix"
   end
 
   test "PUT /?AccountSid=valid", %{conn: conn} do
     conn = put conn, "/", %{"AccountSid" => "AC123"}
-    assert response(conn, 200) =~ "Message was updated"
+    doc = Exml.parse(response(conn, 200))
+
+    assert Exml.get(doc, "//Say") == "Message was updated"
   end
 
   test "PUT /?AccountSid=invalid", %{conn: conn} do
     conn = put conn, "/", %{"AccountSid" => "aaa"}
-    assert response(conn, 401) =~ "Authentication failure"
+    doc = Exml.parse(response(conn, 401))
+
+    assert Exml.get(doc, "//Say") == "Authentication failure"
   end
 end
