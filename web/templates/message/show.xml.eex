@@ -1,4 +1,6 @@
 <Response>
-  <Say>Hello from Phoenix</Say>
+  <Gather method="GET" action="<%= message_path(@conn, :edit) %>">
+    <Say>Hello from Phoenix. Here is some extra text so this takes longer. And more text. And yet more.</Say>
+  </Gather>
   <Redirect method="GET"><%= message_path(@conn, :show) %></Redirect>
 </Response>

@@ -5,8 +5,11 @@ defmodule SingleVoiceMessage.MessageControllerTest do
     conn = get conn, "/", %{"AccountSid" => "AC123"}
     doc = Exml.parse(response(conn, 200))
 
-    assert Exml.get(doc, "//Say") == "Hello from Phoenix"
-    assert Exml.get(doc, "//Say/following-sibling::Redirect") == "/"
+    assert Exml.get(doc, "//Gather/@method") == "GET"
+    assert Exml.get(doc, "//Gather/@action") == "/edit"
+
+    assert Exml.get(doc, "//Say") =~ "Hello from Phoenix"
+    assert Exml.get(doc, "//Gather/following-sibling::Redirect") == "/"
   end
 
   test "GET /edit without PIN", %{conn: conn} do
