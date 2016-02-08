@@ -1,3 +1,4 @@
 <Response>
   <Say>Hello from Phoenix</Say>
+  <Redirect method="GET"><%= message_path(@conn, :show) %></Redirect>
 </Response>

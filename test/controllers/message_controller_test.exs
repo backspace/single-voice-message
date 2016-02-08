@@ -6,6 +6,7 @@ defmodule SingleVoiceMessage.MessageControllerTest do
     doc = Exml.parse(response(conn, 200))
 
     assert Exml.get(doc, "//Say") == "Hello from Phoenix"
+    assert Exml.get(doc, "//Say/following-sibling::Redirect") == "/"
   end
 
   test "PUT /?AccountSid=valid", %{conn: conn} do
