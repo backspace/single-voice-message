@@ -30,32 +30,37 @@ defmodule SingleVoiceMessage.MessageController do
     render conn, "preview.xml", recording_url: recording_url
   end
 
-  def approve(conn, %{"RecordingUrl" => recording_url}) do
-    messages = Repo.all(Message)
+  def approve(conn, %{"RecordingUrl" => recording_url, "Digits" => digits}) do
+    case digits do
+      "1" ->
+        messages = Repo.all(Message)
 
-    message = case length(messages) do
-      0 -> nil
-      _ -> hd(messages)
-    end
+        message = case length(messages) do
+          0 -> nil
+          _ -> hd(messages)
+        end
 
-    if message do
-      changeset = Message.changeset(message, %{"url" => recording_url})
+        if message do
+          changeset = Message.changeset(message, %{"url" => recording_url})
 
-      case Repo.update(changeset) do
-        {:ok, _} ->
-          render conn, "approve.xml"
-        {:error, _changeset} ->
-          render conn, "error.xml"
-      end
-    else
-      changeset = Message.changeset(%Message{}, %{"url" => recording_url})
+          case Repo.update(changeset) do
+            {:ok, _} ->
+              render conn, "approve.xml"
+            {:error, _changeset} ->
+              render conn, "error.xml"
+          end
+        else
+          changeset = Message.changeset(%Message{}, %{"url" => recording_url})
 
-      case Repo.insert(changeset) do
-        {:ok, _} ->
-          render conn, "approve.xml"
-        {:error, _changeset} ->
-          render conn, "error.xml"
-      end
+          case Repo.insert(changeset) do
+            {:ok, _} ->
+              render conn, "approve.xml"
+            {:error, _changeset} ->
+              render conn, "error.xml"
+          end
+        end
+      _ ->
+        render conn, "redirect-to-edit.xml"
     end
   end
 
