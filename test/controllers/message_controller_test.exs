@@ -60,6 +60,8 @@ defmodule SingleVoiceMessage.MessageControllerTest do
 
     assert Exml.get(doc, "//Gather/@method") == "GET"
     assert Exml.get(doc, "//Gather/@action") == "/approve?RecordingUrl=http%3A%2F%2Fexample.com%2Fnew-message.wav"
+    assert Exml.get(doc, "//Gather/@finishOnKey") == ""
+    assert Exml.get(doc, "//Gather/@numDigits") == "1"
   end
 
   test "GET /approve?Digits=1 with no existing message", %{conn: conn} do
