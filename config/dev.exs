@@ -41,4 +41,7 @@ config :single_voice_message, SingleVoiceMessage.Repo,
   hostname: "localhost",
   pool_size: 10
 
+config :single_voice_message,
+  pin: "12345"
+
 import_config "dev.secret.exs"

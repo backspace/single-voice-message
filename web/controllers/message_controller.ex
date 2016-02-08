@@ -7,6 +7,15 @@ defmodule SingleVoiceMessage.MessageController do
     render conn, "show.xml"
   end
 
+  def edit(conn, %{"Digits" => pin}) do
+    permit_editing = case Application.get_env(:single_voice_message, :pin) do
+      ^pin -> true
+      _ -> false
+    end
+
+    render conn, "edit.xml", permit_editing: permit_editing
+  end
+
   def update(conn, _) do
     render conn, "update.xml"
   end

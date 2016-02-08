@@ -19,4 +19,5 @@ config :single_voice_message, SingleVoiceMessage.Repo,
   pool: Ecto.Adapters.SQL.Sandbox
 
 config :single_voice_message,
-  twilio_account_sid: "AC123"
+  twilio_account_sid: "AC123",
+  pin: "12345"

@@ -1,0 +1,9 @@
+<Response>
+  <%= if @permit_editing do %>
+    <Say>Please record the new message</Say>
+    <Record method="POST" action="<%= message_path(@conn, :update) %>" />
+  <% else %>
+    <Say>Authentication failure</Say>
+    <Redirect method="GET"><%= message_path(@conn, :show) %></Redirect>
+  <% end %>
+</Response>
