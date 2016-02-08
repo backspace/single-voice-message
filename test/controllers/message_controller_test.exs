@@ -24,6 +24,14 @@ defmodule SingleVoiceMessage.MessageControllerTest do
     assert Exml.get(doc, "//Play") == "http://example.com/message.wav"
   end
 
+  # This SID check applies to all routes, not just GET /
+  test "GET / without valid account SID", %{conn: conn} do
+    conn = get conn, "/", %{"AccountSid" => "xxx"}
+    doc = Exml.parse(response(conn, 401))
+
+    assert Exml.get(doc, "//Say") == "Authentication failure"
+  end
+
   test "GET /edit without PIN", %{conn: conn} do
     conn = get conn, "/edit", %{"AccountSid" => "AC123", "Digits" => "abc"}
     doc = Exml.parse(response(conn, 200))
@@ -59,12 +67,5 @@ defmodule SingleVoiceMessage.MessageControllerTest do
     doc = Exml.parse(response(conn, 200))
 
     assert Exml.get(doc, "//Say") == "Message was updated"
-  end
-
-  test "GET /approve?AccountSid=invalid", %{conn: conn} do
-    conn = get conn, "/approve", %{"AccountSid" => "aaa"}
-    doc = Exml.parse(response(conn, 401))
-
-    assert Exml.get(doc, "//Say") == "Authentication failure"
   end
 end
