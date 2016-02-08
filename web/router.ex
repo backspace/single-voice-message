@@ -15,7 +15,10 @@ defmodule SingleVoiceMessage.Router do
   scope "/", SingleVoiceMessage do
     pipe_through :browser # Use the default browser stack
 
-    resources "/", MessageController, singleton: true
+    get "/", MessageController, :show
+    get "/edit", MessageController, :edit
+    get "/preview", MessageController, :preview
+    get "/approve", MessageController, :approve
   end
 
   # Other scopes may use custom stacks.

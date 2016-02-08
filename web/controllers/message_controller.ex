@@ -26,8 +26,8 @@ defmodule SingleVoiceMessage.MessageController do
     render conn, "edit.xml", permit_editing: permit_editing
   end
 
-  def update(conn, _) do
-    render conn, "update.xml"
+  def approve(conn, _) do
+    render conn, "approve.xml"
   end
 
   defp authenticate(%Plug.Conn{params: %{"AccountSid" => request_twilio_account_sid}} = conn, _) do
