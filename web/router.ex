@@ -19,6 +19,8 @@ defmodule SingleVoiceMessage.Router do
     get "/edit", MessageController, :edit
     get "/preview", MessageController, :preview
     get "/approve", MessageController, :approve
+
+    get "/log", MessageController, :log
   end
 
   # Other scopes may use custom stacks.

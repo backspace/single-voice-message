@@ -20,4 +20,5 @@ config :single_voice_message, SingleVoiceMessage.Repo,
 
 config :single_voice_message,
   twilio_account_sid: "AC123",
-  pin: "12345"
+  pin: "12345",
+  log_phone_number: "+12049832050"

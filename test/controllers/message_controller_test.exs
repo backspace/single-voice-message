@@ -3,6 +3,15 @@ defmodule SingleVoiceMessage.MessageControllerTest do
 
   alias SingleVoiceMessage.Message
 
+  test "GET /log", %{conn: conn} do
+    conn = get conn, "/log", %{"AccountSid" => "AC123", "From" => "number"}
+    doc = Exml.parse(response(conn, 200))
+
+    assert Exml.get(doc, "//Sms/@to") == "+12049832050"
+    assert Exml.get(doc, "//Sms") == "Call from number"
+    assert Exml.get(doc, "//Redirect") == "/"
+  end
+
   test "GET / with no existing message", %{conn: conn} do
     conn = get conn, "/", %{"AccountSid" => "AC123"}
     doc = Exml.parse(response(conn, 200))

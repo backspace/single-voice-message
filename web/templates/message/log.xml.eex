@@ -1,0 +1,6 @@
+<Response>
+  <%= if @log_phone_number do %>
+    <Sms to="<%= @log_phone_number %>">Call from <%= @from %></Sms>
+  <% end %>
+  <Redirect method="GET"><%= message_path(@conn, :show) %></Redirect>
+</Response>

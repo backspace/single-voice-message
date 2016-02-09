@@ -27,4 +27,5 @@ config :logger, level: :info
 
 config :single_voice_message,
   twilio_account_sid: System.get_env("TWILIO_ACCOUNT_SID"),
-  pin: System.get_env("PIN")
+  pin: System.get_env("PIN"),
+  log_phone_number: System.get_env("LOG_PHONE_NUMBER")

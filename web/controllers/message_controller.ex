@@ -64,6 +64,10 @@ defmodule SingleVoiceMessage.MessageController do
     end
   end
 
+  def log(conn, %{"From" => from}) do
+    render conn, "log.xml", from: from, log_phone_number: Application.get_env(:single_voice_message, :log_phone_number)
+  end
+
   defp authenticate(%Plug.Conn{params: %{"AccountSid" => request_twilio_account_sid}} = conn, _) do
     case Application.get_env(:single_voice_message, :twilio_account_sid) do
       ^request_twilio_account_sid ->
