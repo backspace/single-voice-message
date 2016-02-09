@@ -60,7 +60,7 @@ defmodule SingleVoiceMessage.MessageController do
           end
         end
       _ ->
-        render conn, "redirect-to-edit.xml"
+        render conn, "redirect-to-edit.xml", pin: Application.get_env(:single_voice_message, :pin)
     end
   end
 
