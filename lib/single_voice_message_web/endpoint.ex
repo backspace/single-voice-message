@@ -1,7 +1,7 @@
-defmodule SingleVoiceMessage.Endpoint do
+defmodule SingleVoiceMessageWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :single_voice_message
 
-  socket "/socket", SingleVoiceMessage.UserSocket
+  socket "/socket", SingleVoiceMessageWeb.UserSocket
 
   # Serve at "/" the static files from "priv/static" directory.
   #
@@ -35,5 +35,5 @@ defmodule SingleVoiceMessage.Endpoint do
     key: "_single_voice_message_key",
     signing_salt: "yLKD+54U"
 
-  plug SingleVoiceMessage.Router
+  plug SingleVoiceMessageWeb.Router
 end

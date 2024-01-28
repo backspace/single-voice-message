@@ -6,7 +6,7 @@ use Mix.Config
 # The watchers configuration can be used to run external
 # watchers to your application. For example, we use it
 # with brunch.io to recompile .js and .css sources.
-config :single_voice_message, SingleVoiceMessage.Endpoint,
+config :single_voice_message, SingleVoiceMessageWeb.Endpoint,
   http: [port: 5000],
   debug_errors: true,
   code_reloader: true,
@@ -14,13 +14,13 @@ config :single_voice_message, SingleVoiceMessage.Endpoint,
   watchers: []
 
 # Watch static and templates for browser reloading.
-config :single_voice_message, SingleVoiceMessage.Endpoint,
+config :single_voice_message, SingleVoiceMessageWeb.Endpoint,
   live_reload: [
     patterns: [
       ~r{priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$},
       ~r{priv/gettext/.*(po)$},
-      ~r{web/views/.*(ex)$},
-      ~r{web/templates/.*(eex)$}
+      ~r{lib/single_voice_message_web/views/.*(ex)$},
+      ~r{lib/single_voice_message_web/templates/.*(eex)$}
     ]
   ]
 

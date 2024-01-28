@@ -1,4 +1,4 @@
-defmodule SingleVoiceMessage.MessageController do
+defmodule SingleVoiceMessageWeb.MessageController do
   use SingleVoiceMessage.Web, :controller
 
   alias SingleVoiceMessage.Message

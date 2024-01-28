@@ -1,4 +1,4 @@
-defmodule SingleVoiceMessage.ErrorHelpers do
+defmodule SingleVoiceMessageWeb.ErrorHelpers do
   @moduledoc """
   Conveniences for translating and building error messages.
   """

@@ -1,4 +1,4 @@
-defmodule SingleVoiceMessage.ErrorView do
+defmodule SingleVoiceMessageWeb.ErrorView do
   use SingleVoiceMessage.Web, :view
 
   def render("404.html", _assigns) do

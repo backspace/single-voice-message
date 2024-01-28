@@ -1,5 +1,5 @@
 defmodule SingleVoiceMessage.MessageControllerTest do
-  use SingleVoiceMessage.ConnCase
+  use SingleVoiceMessageWeb.ConnCase
 
   alias SingleVoiceMessage.Message
 

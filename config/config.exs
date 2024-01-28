@@ -6,7 +6,7 @@
 use Mix.Config
 
 # Configures the endpoint
-config :single_voice_message, SingleVoiceMessage.Endpoint,
+config :single_voice_message, SingleVoiceMessageWeb.Endpoint,
   url: [host: "localhost"],
   root: Path.dirname(__DIR__),
   secret_key_base: "hZKMnq8sk7bp5aJ9S6MZ1yDedDHzlBlkPfrSYWHTnoI9wTmZA8ejy/H27MMF/aGa",

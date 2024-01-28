@@ -1,4 +1,4 @@
-defmodule SingleVoiceMessage.ConnCase do
+defmodule SingleVoiceMessageWeb.ConnCase do
   @moduledoc """
   This module defines the test case to be used by
   tests that require setting up a connection.
@@ -25,10 +25,10 @@ defmodule SingleVoiceMessage.ConnCase do
       import Ecto.Changeset
       import Ecto.Query, only: [from: 1, from: 2]
 
-      import SingleVoiceMessage.Router.Helpers
+      import SingleVoiceMessageWeb.Router.Helpers
 
       # The default endpoint for testing
-      @endpoint SingleVoiceMessage.Endpoint
+      @endpoint SingleVoiceMessageWeb.Endpoint
     end
   end
 

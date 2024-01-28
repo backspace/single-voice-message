@@ -1,4 +1,4 @@
-defmodule SingleVoiceMessage.Message do
+defmodule SingleVoiceMessageWeb.Message do
   use SingleVoiceMessage.Web, :model
 
   schema "messages" do

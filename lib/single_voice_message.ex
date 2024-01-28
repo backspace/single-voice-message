@@ -8,7 +8,7 @@ defmodule SingleVoiceMessage do
 
     children = [
       # Start the endpoint when the application starts
-      supervisor(SingleVoiceMessage.Endpoint, []),
+      supervisor(SingleVoiceMessageWeb.Endpoint, []),
       # Start the Ecto repository
       supervisor(SingleVoiceMessage.Repo, []),
       # Here you could define other workers and supervisors as children
@@ -24,7 +24,7 @@ defmodule SingleVoiceMessage do
   # Tell Phoenix to update the endpoint configuration
   # whenever the application is updated.
   def config_change(changed, _new, removed) do
-    SingleVoiceMessage.Endpoint.config_change(changed, removed)
+    SingleVoiceMessageWeb.Endpoint.config_change(changed, removed)
     :ok
   end
 end

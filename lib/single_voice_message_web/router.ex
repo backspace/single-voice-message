@@ -1,4 +1,4 @@
-defmodule SingleVoiceMessage.Router do
+defmodule SingleVoiceMessageWeb.Router do
   use SingleVoiceMessage.Web, :router
 
   pipeline :browser do
@@ -12,7 +12,7 @@ defmodule SingleVoiceMessage.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", SingleVoiceMessage do
+  scope "/", SingleVoiceMessageWeb do
     pipe_through :browser # Use the default browser stack
 
     get "/", MessageController, :show

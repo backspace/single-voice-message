@@ -1,3 +1,3 @@
 defmodule SingleVoiceMessage.LayoutViewTest do
-  use SingleVoiceMessage.ConnCase, async: true
+  use SingleVoiceMessageWeb.ConnCase, async: true
 end
