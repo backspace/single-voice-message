@@ -1,7 +1,7 @@
 defmodule SingleVoiceMessage.MessageControllerTest do
   use SingleVoiceMessageWeb.ConnCase
 
-  alias SingleVoiceMessage.Message
+  alias SingleVoiceMessageWeb.Message
 
   test "GET /log", %{conn: conn} do
     conn = get conn, "/log", %{"AccountSid" => "AC123", "From" => "number"}
