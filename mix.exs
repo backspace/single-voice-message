@@ -36,7 +36,7 @@ defmodule SingleVoiceMessage.Mixfile do
      {:phoenix_ecto, "~> 3.0"},
      {:phoenix_html, "~> 2.4"},
      {:phoenix_live_reload, "~> 1.0", only: :dev},
-     {:gettext, "~> 0.9"},
+     {:gettext, "~> 0.12"},
      {:cowboy, "~> 1.0"},
      {:mix_test_watch, "~> 0.2", only: :dev},
      {:exml, "~> 0.1.3", only: :test}]
