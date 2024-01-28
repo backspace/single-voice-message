@@ -1,6 +1,3 @@
 ExUnit.start
 
-Mix.Task.run "ecto.create", ~w(-r SingleVoiceMessage.Repo --quiet)
-Mix.Task.run "ecto.migrate", ~w(-r SingleVoiceMessage.Repo --quiet)
-Ecto.Adapters.SQL.begin_test_transaction(SingleVoiceMessage.Repo)
-
+Ecto.Adapters.SQL.Sandbox.mode(SingleVoiceMessage.Repo, :manual)
