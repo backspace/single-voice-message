@@ -1,7 +1,9 @@
 defmodule SingleVoiceMessageWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :single_voice_message
 
-  socket "/socket", SingleVoiceMessageWeb.UserSocket
+  socket "/socket", SingleVoiceMessageWeb.UserSocket,
+    websocket: true,
+    longpoll: false
 
   # Serve at "/" the static files from "priv/static" directory.
   #
@@ -25,7 +27,7 @@ defmodule SingleVoiceMessageWeb.Endpoint do
   plug Plug.Parsers,
     parsers: [:urlencoded, :multipart, :json],
     pass: ["*/*"],
-    json_decoder: Poison
+    json_decoder: Jason
 
   plug Plug.MethodOverride
   plug Plug.Head

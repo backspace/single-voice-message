@@ -25,7 +25,7 @@ defmodule SingleVoiceMessageWeb.ConnCase do
       import Ecto.Changeset
       import Ecto.Query, only: [from: 1, from: 2]
 
-      import SingleVoiceMessageWeb.Router.Helpers
+      alias SingleVoiceMessageWeb.Router.Helpers, as: Routes
 
       # The default endpoint for testing
       @endpoint SingleVoiceMessageWeb.Endpoint

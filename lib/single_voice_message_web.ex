@@ -34,7 +34,7 @@ defmodule SingleVoiceMessage.Web do
       import Ecto
       import Ecto.Query, only: [from: 1, from: 2]
 
-      import SingleVoiceMessageWeb.Router.Helpers
+      alias SingleVoiceMessageWeb.Router.Helpers, as: Routes
       import SingleVoiceMessageWeb.Gettext
     end
   end
@@ -50,7 +50,7 @@ defmodule SingleVoiceMessage.Web do
       # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML
 
-      import SingleVoiceMessageWeb.Router.Helpers
+      alias SingleVoiceMessageWeb.Router.Helpers, as: Routes
       import SingleVoiceMessageWeb.ErrorHelpers
       import SingleVoiceMessageWeb.Gettext
     end
