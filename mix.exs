@@ -9,8 +9,8 @@ defmodule SingleVoiceMessage.Mixfile do
      compilers: [:phoenix, :gettext] ++ Mix.compilers,
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
-     aliases: aliases,
-     deps: deps]
+     aliases: aliases(),
+     deps: deps()]
   end
 
   # Configuration for the OTP application.
@@ -30,7 +30,7 @@ defmodule SingleVoiceMessage.Mixfile do
   #
   # Type `mix help deps` for examples and options.
   defp deps do
-    [{:phoenix, "~> 1.1.4"},
+    [{:phoenix, "~> 1.1.6"},
      {:postgrex, ">= 0.0.0"},
      {:phoenix_ecto, "~> 2.0"},
      {:phoenix_html, "~> 2.4"},
@@ -38,7 +38,7 @@ defmodule SingleVoiceMessage.Mixfile do
      {:gettext, "~> 0.9"},
      {:cowboy, "~> 1.0"},
      {:mix_test_watch, "~> 0.2", only: :dev},
-     {:exml, "~> 0.1", only: :test}]
+     {:exml, "~> 0.1.3", only: :test}]
   end
 
   # Aliases are shortcut or tasks specific to the current project.
