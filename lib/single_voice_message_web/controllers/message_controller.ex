@@ -1,7 +1,7 @@
 defmodule SingleVoiceMessageWeb.MessageController do
   use SingleVoiceMessage.Web, :controller
 
-  alias SingleVoiceMessage.Message
+  alias SingleVoiceMessageWeb.Message
 
   plug :authenticate
 

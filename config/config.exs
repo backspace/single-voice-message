@@ -28,4 +28,6 @@ config :phoenix, :generators,
   migration: true,
   binary_id: false
 
+config :phoenix, :json_library, Jason
+
 config :single_voice_message, ecto_repos: [SingleVoiceMessage.Repo]

@@ -5,7 +5,7 @@ defmodule SingleVoiceMessage.Repo.Migrations.CreateMessage do
     create table(:messages) do
       add :url, :string
 
-      timestamps
+      timestamps()
     end
 
   end

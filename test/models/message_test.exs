@@ -1,7 +1,7 @@
-defmodule SingleVoiceMessage.MessageTest do
+defmodule SingleVoiceMessageWeb.MessageTest do
   use SingleVoiceMessage.ModelCase
 
-  alias SingleVoiceMessage.Message
+  alias SingleVoiceMessageWeb.Message
 
   @valid_attrs %{url: "some content"}
   @invalid_attrs %{}

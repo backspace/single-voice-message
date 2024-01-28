@@ -1,10 +1,10 @@
 <Response>
-  <Gather method="GET" action="<%= message_path(@conn, :edit) %>">
+  <Gather method="GET" action="<%= Routes.message_path(@conn, :edit) %>">
     <%= if @message do %>
       <Play><%= @message.url %></Play>
     <% else %>
       <Say>Hello from Phoenix. Here is some extra text so this takes longer. And more text. And yet more.</Say>
     <% end %>
   </Gather>
-  <Redirect method="GET"><%= message_path(@conn, :show) %></Redirect>
+  <Redirect method="GET"><%= Routes.message_path(@conn, :show) %></Redirect>
 </Response>

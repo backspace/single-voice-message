@@ -4,7 +4,7 @@ defmodule SingleVoiceMessageWeb.Message do
   schema "messages" do
     field :url, :string
 
-    timestamps
+    timestamps()
   end
 
   @required_fields ~w(url)
