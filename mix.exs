@@ -17,7 +17,7 @@ defmodule SingleVoiceMessage.Mixfile do
   #
   # Type `mix help compile.app` for more information.
   def application do
-    [mod: {SingleVoiceMessage, []}, extra_applications: [:logger, :phoenix]]
+    [mod: {SingleVoiceMessage, []}, extra_applications: [:logger, :phoenix, :phoenix_pubsub]]
   end
 
   # Specifies which paths to compile per environment.
@@ -29,6 +29,7 @@ defmodule SingleVoiceMessage.Mixfile do
   # Type `mix help deps` for examples and options.
   defp deps do
     [{:phoenix, "~> 1.4"},
+     {:phoenix_pubsub, "~> 1.0"},
      {:postgrex, ">= 0.0.0"},
      {:phoenix_ecto, "~> 4.0"},
      {:ecto_sql, "~> 3.0"},
