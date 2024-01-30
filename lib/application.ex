@@ -7,6 +7,8 @@ defmodule SingleVoiceMessage do
     import Supervisor.Spec, warn: false
 
     children = [
+      # Start the PubSub system
+      {Phoenix.PubSub, name: SingleVoiceMessage.PubSub},
       # Start the endpoint when the application starts
       supervisor(SingleVoiceMessageWeb.Endpoint, []),
       # Start the Ecto repository
