@@ -7,7 +7,7 @@ defmodule SingleVoiceMessageWeb.Message do
     timestamps()
   end
 
-  @required_fields ~w(url)
+  @required_fields ~w(url)a
   @optional_fields ~w()
 
   @doc """
